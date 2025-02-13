@@ -178,7 +178,7 @@
                 TotalCostStr = TotalCost.toFixed(2);
                 document.getElementById("DisplayTotal").innerHTML = "Total: $" + TotalCostStr;
 
-                valid = (TotalItems >= 0); // Did the customer actually order anything?
+                valid = (TotalItems > 0); // Did the customer actually order anything? <!-- fixed-->
             }
 
             function pay() 
