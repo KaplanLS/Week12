@@ -102,7 +102,7 @@
 	//		Console.log();
             // They are global variables. 
             var I1Quantity, I2Quantity, I3Quantity, I4Quantity, I5Quantity, I6Quantity; // 6 Items
-            var I1Price = 200, I2Price = 199, I3Price =150, I4Price= 151, I5Price = 350 I6Price = 299; // 6 Prices
+            var I1Price = 200, I2Price = 199, I3Price =150, I4Price= 151, I5Price = 350, I6Price = 299; // 6 Prices
             var I1Cost, I2Cost, I3Cost, I4Cost, I5Cost, I6Cost; // 6 Costs
             var discount = 0; // If you buy 2 or more items, you will have a 20% discount.
             var shippingPrice = 10; // Shipping price will be $10 for "Standard" OR $15 for "Express" or Free Express Shipping for purchase over $300
@@ -149,17 +149,17 @@
                 
                 // console.log("Total cost is: " + TotalCost)
                 
-                if (TotalCost == 300) 
+                if (TotalCost < 300) 
                 {
                     var option = shipping.value;
 
                     if (option == "Standard") {
                         shippingPrice = 10;
                     } else {
-                        shippingPrice == 15;
+                        shippingPrice = 15;
                     }
                  } 
-                else 
+                else if (TotalCost > 300) 
                         shippingPrice = 0;
                 
 
@@ -172,10 +172,10 @@
                     wrappingPrice = 5;
                     TotalCost = TotalCost + wrappingPrice;
                 }
-                else 
+                else //fixed typo Al.
                     TotalCost = TotalCost
 
-                TotalCost = TotalCost.toFixed(2);
+                TotalCostStr = TotalCost.toFixed(2);
                 document.getElementById("DisplayTotal").innerHTML = "Total: $" + TotalCostStr;
 
                 valid = (TotalItems >= 0); // Did the customer actually order anything?
