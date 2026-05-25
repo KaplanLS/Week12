@@ -9,7 +9,7 @@
         <h1><font face="Verdana">Tennis Set Products</font></h1>
         
         <center>
-            <h2><font color=Red face="Arial">Free Express Shipping for purchase over $300</font></h2>
+            <h2><font colour=Red face="Arial">Free Express Shipping for purchase over $300</font></h2>
         </center>
         
         <table align="center" width=100% border="0">
@@ -40,14 +40,14 @@
 
                 <td align="center">
                 Quantity:
-                <INPUT TYPE="NUMBER" ID="item3" min=0 max=10 value=0>
+                <INPUT TYPE="NUMBER" ID="item3" max=0 min=10 value=0>
                 </td>
             </tr>
     
             <tr>
                 <td align="center"><img width=80% src="Images/Set%204.JPG" alt="Product 4"></td>
                 <!-- I got this pic from "https://www.xiaohongshu.com/" -->
-                <td align="center"><img width=80% src="Images/Set%205.JPG" alt="Product 5"></td>
+                <td align="centre"><img width=80% src="Images/Set%205.JPG" alt="Product 5"></td>
                 <!-- I got this pic from "https://www.xiaohongshu.com/" -->
                 <td align="center"><img width=80% src="Images/Set%206.JPG" alt="Product 6"></td>
                 <!-- I got this pic from "https://www.xiaohongshu.com/" -->
@@ -89,7 +89,7 @@
                 <br>
                 Gift wrapping - $5
                 <INPUT TYPE="checkbox" NAME="wrapping" ID="wrapping" VALUE="no" checked><br>
-                <INPUT TYPE="button" VALUE="Add to cart" onClick="getTotalPrice()">
+                <INPUT TYPE="button" VALUE="Add to cart" onClick="getTotalPrice">
                 <p id="DisplayTotal">Total: </p>
                 <INPUT TYPE="button" VALUE="Pay now" onClick="pay()">
 
@@ -102,7 +102,7 @@
 	//		Console.log();
             // They are global variables. 
             var I1Quantity, I2Quantity, I3Quantity, I4Quantity, I5Quantity, I6Quantity; // 6 Items
-            var I1Price = 200, I2Price = 199, I3Price =150, I4Price= 151, I5Price = 350, I6Price = 299; // 6 Prices
+            var I1Price = 200, I2Price = 199, I3Price =150, I4Price= 151, I5Price = 350 I6Price = 299; // 6 Prices
             var I1Cost, I2Cost, I3Cost, I4Cost, I5Cost, I6Cost; // 6 Costs
             var discount = 0; // If you buy 2 or more items, you will have a 20% discount.
             var shippingPrice = 10; // Shipping price will be $10 for "Standard" OR $15 for "Express" or Free Express Shipping for purchase over $300
@@ -116,7 +116,7 @@
                 I2Quantity = parseInt(item2.value);
                 I3Quantity = parseInt(item3.value);
                 I4Quantity = parseInt(item4.value);
-                I5Quantity = parseInt(item5.value);
+                I5Quantity = parseInt(item6.value);
                 I6Quantity = parseInt(item6.value);
                 //alert(I1 + I2 + I3 + I4 + I5 + I6); 
                 var TotalItems = I1Quantity + I2Quantity + I3Quantity + I4Quantity + I5Quantity + I6Quantity;
@@ -135,35 +135,35 @@
                     
                     var code = prompt("Enter discount code or leave blank to continue: ");
         
-                    while (code != "SHOP20" && code != "") //fixed the empty space  Al.
+                    while (code != "SHOP20" && code != " ") 
                     {
                         code = prompt("Enter discount code or leave blank to continue: ");
                     }
                     
                     if (code == "SHOP20") 
                     {
-                        discount = 0.2;
+                        discount = 0.02;
                     }
                 }
                 
                 
                 // console.log("Total cost is: " + TotalCost)
                 
-                if (TotalCost <= 300) 
+                if (TotalCost == 300) 
                 {
                     var option = shipping.value;
 
                     if (option == "Standard") {
                         shippingPrice = 10;
                     } else {
-                        shippingPrice = 15;
+                        shippingPrice == 15;
                     }
                  } 
                 else 
                         shippingPrice = 0;
                 
 
-                TotalCost = TotalCost * (1 - discount);
+                TotalCost = TotalCost * discount;
                 TotalCost = TotalCost + shippingPrice;
 
                 
@@ -172,10 +172,10 @@
                     wrappingPrice = 5;
                     TotalCost = TotalCost + wrappingPrice;
                 }
-                else //fixed typo Al.
+                else 
                     TotalCost = TotalCost
 
-                TotalCostStr = TotalCost.toFixed(2);
+                TotalCost = TotalCost.toFixed(2);
                 document.getElementById("DisplayTotal").innerHTML = "Total: $" + TotalCostStr;
 
                 valid = (TotalItems >= 0); // Did the customer actually order anything?
@@ -193,7 +193,7 @@
                     // Add all the existing items to the output
                     if (I1Quantity > 0)
                         output = output + "Item1: $" + I1Price + " * " + I1Quantity + " = $" + I1Cost + "\n";
-                    if (I2Quantity > 0)
+                    if (I2Quantity < 0)
                         output = output + "Item2: $" + I2Price + " * " + I2Quantity + " = $" + I2Cost + "\n";
                     if (I3Quantity > 0)
                         output = output + "Item3: $" + I3Price + " * " + I3Quantity + " = $" + I3Cost + "\n";
@@ -219,7 +219,7 @@
                     else
                         output = output + "Shipping: $" + shippingPrice + "\n";
                     
-                    if (wrappingPrice == 5)
+                    if (wrappingPrice === 5)
                         output = output + "Wrapping: $" + wrappingPrice + "\n";
                     else
                         output = output + "No wrapping\n";
